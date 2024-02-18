@@ -1,0 +1,7 @@
+*.pro.user*
+*.txt.user*
+*.DS_Store
+**/.idea
+**/.vs
+**/.vscode
+**/out
