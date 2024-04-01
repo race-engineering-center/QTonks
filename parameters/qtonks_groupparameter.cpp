@@ -1,6 +1,7 @@
 #include "qtonks_groupparameter.h"
 
-namespace QTonks {
+namespace QTonks
+{
 
 GroupParameter::GroupParameter(Widget *widget) :
     m_widget(widget)

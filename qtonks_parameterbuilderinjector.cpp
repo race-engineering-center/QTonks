@@ -5,7 +5,8 @@
 #include "qtonks_switchparameterbuilder.h"
 #include "qtonks_groupparameterbuilder.h"
 
-namespace QTonks {
+namespace QTonks
+{
 
 namespace
 {

@@ -4,7 +4,8 @@
 #include "qtonks_parameter.h"
 #include "qtonks_widget.h"
 
-namespace QTonks {
+namespace QTonks
+{
 
 class GroupParameter : public Parameter
 {

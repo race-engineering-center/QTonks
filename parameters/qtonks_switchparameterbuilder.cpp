@@ -4,7 +4,8 @@
 
 #include "qtonks_switchparameter.h"
 
-namespace QTonks {
+namespace QTonks
+{
 
 std::unique_ptr<Parameter> SwitchParameterBuilder::build(const QJsonObject &object, QFormLayout *layout)
 {
