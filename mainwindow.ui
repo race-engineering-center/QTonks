@@ -55,10 +55,28 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionUpdate"/>
+   <addaction name="actionGetCurrentSettings"/>
+   <addaction name="actionSetCurrentSettings"/>
   </widget>
   <action name="actionUpdate">
    <property name="text">
     <string>Update</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionGetCurrentSettings">
+   <property name="text">
+    <string>Get current settings</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionSetCurrentSettings">
+   <property name="text">
+    <string>Set current settings</string>
    </property>
    <property name="menuRole">
     <enum>QAction::NoRole</enum>

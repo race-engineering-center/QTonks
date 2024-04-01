@@ -11,12 +11,14 @@ SwitchParameter::SwitchParameter(QCheckBox *checkBox) :
 
 QJsonObject SwitchParameter::getCurrentSettings() const
 {
-    return {};
+    QJsonObject result;
+    result["enabled"] = m_checkBox->isChecked();
+    return result;
 }
 
 void SwitchParameter::setCurrentSettings(const QJsonObject &settings)
 {
-
+    m_checkBox->setChecked(settings.value("enabled").toBool());
 }
 
 }

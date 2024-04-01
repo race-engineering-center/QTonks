@@ -10,12 +10,12 @@ GroupParameter::GroupParameter(Widget *widget) :
 
 QJsonObject GroupParameter::getCurrentSettings() const
 {
-    return {};
+    return m_widget->getCurrentSettings();
 }
 
 void GroupParameter::setCurrentSettings(const QJsonObject &settings)
 {
-
+    m_widget->setCurrentSettings(settings);
 }
 
 }

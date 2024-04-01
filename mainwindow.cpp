@@ -14,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->splitter->setSizes({250, 250});
 
     connect(ui->actionUpdate, &QAction::triggered, this, &MainWindow::onUpdate);
+    connect(ui->actionGetCurrentSettings, &QAction::triggered, this, &MainWindow::onGetCurrentSettings);
+    connect(ui->actionSetCurrentSettings, &QAction::triggered, this, &MainWindow::onSetCurrentSettings);
 
     QTonks::injectAllParameterBuilders();
 }
@@ -40,4 +42,26 @@ void MainWindow::onUpdate()
     QJsonObject object = jsonDocument.object();
     QJsonArray schema = object["schema"].toArray();
     ui->widget->setSchema(schema);
+}
+
+void MainWindow::onGetCurrentSettings()
+{
+    auto settings = ui->widget->getCurrentSettings();
+    qDebug()<<settings;
+}
+
+void MainWindow::onSetCurrentSettings()
+{
+    QString jsonString = ui->plainTextEdit->toPlainText();
+    QJsonParseError error;
+    QJsonDocument jsonDocument = QJsonDocument::fromJson(jsonString.toUtf8(), &error);
+
+    if (jsonDocument.isNull())
+    {
+        qDebug() << "Error parsing JSON: " << error.errorString();
+        return;
+    }
+
+    QJsonObject object = jsonDocument.object();
+    ui->widget->setCurrentSettings(object);
 }

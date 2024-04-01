@@ -59,7 +59,13 @@ QJsonObject Widget::getCurrentSettings() const
 
 void Widget::setCurrentSettings(const QJsonObject &settings)
 {
-
+    for (const auto& [name, parameter]: m_parameters)
+    {
+        QJsonObject s = settings.value(name).toObject();
+        if (s.isEmpty())
+            continue;
+        parameter->setCurrentSettings(s);
+    }
 }
 
 void Widget::clear()

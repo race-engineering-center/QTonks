@@ -18,6 +18,8 @@ public:
     ~MainWindow();
 
     void onUpdate();
+    void onGetCurrentSettings();
+    void onSetCurrentSettings();
 
 private:
     Ui::MainWindow *ui;
