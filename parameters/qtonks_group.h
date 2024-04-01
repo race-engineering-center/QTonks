@@ -19,6 +19,14 @@ private:
     Widget* m_widget;
 };
 
+class GroupParameterBuilder : public ParameterBuilder
+{
+public:
+    std::unique_ptr<Parameter> build(const QJsonObject& object, QFormLayout* layout) override;
+
+    static const char* name();
+};
+
 }
 
 #endif // QTONKS_GROUPPARAMETER_H

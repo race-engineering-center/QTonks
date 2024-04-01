@@ -67,10 +67,10 @@ editing settings based on a JSON schema
                     "content": 
                     [
                         {
-                        "name": "nestedSwitch",
-                        "type": "switch",
-                        "label": "Wow!"
-                        },
+                            "name": "nestedSwitch",
+                            "type": "switch",
+                            "label": "Wow!"
+                        }
                     ]
                 }
             ]

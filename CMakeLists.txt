@@ -29,15 +29,10 @@ set(PROJECT_SOURCES
         qtonks_parameterbuildermanager.cpp
         qtonks_parameterbuildermanager.h
 
-        parameters/qtonks_switchparameter.h
-        parameters/qtonks_switchparameter.cpp
-        parameters/qtonks_switchparameterbuilder.h
-        parameters/qtonks_switchparameterbuilder.cpp
-
-        parameters/qtonks_groupparameter.h
-        parameters/qtonks_groupparameter.cpp
-        parameters/qtonks_groupparameterbuilder.h
-        parameters/qtonks_groupparameterbuilder.cpp
+        parameters/qtonks_switch.h
+        parameters/qtonks_switch.cpp
+        parameters/qtonks_group.h
+        parameters/qtonks_group.cpp
 )
 
 qt_add_executable(${PROJECT_NAME}

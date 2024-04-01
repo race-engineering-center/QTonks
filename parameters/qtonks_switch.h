@@ -4,6 +4,7 @@
 #include <QCheckBox>
 
 #include "qtonks_parameter.h"
+#include "qtonks_parameterbuilder.h"
 
 namespace QTonks
 {
@@ -18,6 +19,14 @@ public:
 
 private:
     QCheckBox* m_checkBox;
+};
+
+class SwitchParameterBuilder : public ParameterBuilder
+{
+public:
+    std::unique_ptr<Parameter> build(const QJsonObject& object, QFormLayout* layout) override;
+
+    static const char* name();
 };
 
 }

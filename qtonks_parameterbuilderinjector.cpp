@@ -2,8 +2,8 @@
 
 #include "qtonks_parameterbuildermanager.h"
 
-#include "qtonks_switchparameterbuilder.h"
-#include "qtonks_groupparameterbuilder.h"
+#include "qtonks_switch.h"
+#include "qtonks_group.h"
 
 namespace QTonks
 {
