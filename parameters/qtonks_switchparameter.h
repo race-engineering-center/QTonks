@@ -12,6 +12,7 @@ class SwitchParameter : public Parameter
 {
 public:
     SwitchParameter(QCheckBox* checkBox);
+
     QJsonObject getCurrentSettings() const override;
     void setCurrentSettings(const QJsonObject& settings) override;
 

@@ -23,7 +23,7 @@ std::unique_ptr<Parameter> GroupParameterBuilder::build(const QJsonObject &objec
     groupBox->setLayout(new QVBoxLayout());
     groupBox->layout()->addWidget(widget);
 
-    return std::make_unique<GroupParameter>(std::move(widget));
+    return std::make_unique<GroupParameter>(widget);
 }
 
 const char* GroupParameterBuilder::name()
