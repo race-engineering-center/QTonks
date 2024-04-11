@@ -70,7 +70,9 @@ void Widget::setCurrentSettings(const QJsonObject &settings)
 
 void Widget::clear()
 {
-
+    m_parameters.clear();
+    for (int i = m_mainLayout->rowCount(); i > 0; i--)
+        m_mainLayout->removeRow(i - 1);
 }
 
 }

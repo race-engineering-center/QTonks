@@ -29,8 +29,10 @@ set(PROJECT_SOURCES
         qtonks_parameterbuildermanager.cpp
         qtonks_parameterbuildermanager.h
 
-        parameters/qtonks_switch.h
         parameters/qtonks_switch.cpp
+        parameters/qtonks_switch.h
+        parameters/qtonks_enumeration.cpp
+        parameters/qtonks_enumeration.h
         parameters/qtonks_group.h
         parameters/qtonks_group.cpp
 )

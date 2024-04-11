@@ -25,7 +25,7 @@ std::unique_ptr<Parameter> SwitchParameterBuilder::build(const QJsonObject &obje
 {
     QString label = object["label"].toString();
 
-    QCheckBox* checkBox = new QCheckBox();
+    auto checkBox = new QCheckBox();
     checkBox->setText(label);
 
     layout->addRow(checkBox);

@@ -3,6 +3,7 @@
 #include "qtonks_parameterbuildermanager.h"
 
 #include "qtonks_switch.h"
+#include "qtonks_enumeration.h"
 #include "qtonks_group.h"
 
 namespace QTonks
@@ -22,6 +23,7 @@ void addParameterBuilder()
 void injectAllParameterBuilders()
 {
     addParameterBuilder<SwitchParameterBuilder>();
+    addParameterBuilder<EnumerationParameterBuilder>();
     addParameterBuilder<GroupParameterBuilder>();
 }
 
