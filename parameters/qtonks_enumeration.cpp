@@ -16,13 +16,21 @@ EnumerationParameter::EnumerationParameter(QGroupBox* groupBox, QButtonGroup *bu
 QJsonObject EnumerationParameter::getCurrentSettings() const
 {
     QJsonObject result;
-
+    result["selectedIndex"] = m_buttonGroup->checkedId();
     return result;
 }
 
 void EnumerationParameter::setCurrentSettings(const QJsonObject &settings)
 {
-
+    if (settings.contains("selectedIndex") && settings["selectedIndex"].isDouble())
+    {
+        int selectedIndex = settings["selectedIndex"].toInt();
+        auto buttons = m_buttonGroup->buttons();
+        if (selectedIndex >= 0 && selectedIndex < buttons.size())
+        {
+            m_buttonGroup->button(selectedIndex)->setChecked(true);
+        }
+    }
 }
 
 std::unique_ptr<Parameter> EnumerationParameterBuilder::build(const QJsonObject &object, QFormLayout *layout)
@@ -48,7 +56,7 @@ std::unique_ptr<Parameter> EnumerationParameterBuilder::build(const QJsonObject 
             groupBox->layout()->addWidget(radioButton);
         }
 
-        int currentIndex = object["defaultOption"].toInt(0);
+        int currentIndex = object["defaultSelectedOption"].toInt(0);
         if (currentIndex < 0 || currentIndex >= labelsArray.size())
             currentIndex = 0;
 
@@ -56,8 +64,6 @@ std::unique_ptr<Parameter> EnumerationParameterBuilder::build(const QJsonObject 
         Q_ASSERT(currentButton != nullptr);
         currentButton->setChecked(true);
     }
-
-
 
     layout->addRow(groupBox);
 
