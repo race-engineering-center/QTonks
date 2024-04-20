@@ -1,0 +1,11 @@
+#ifndef QTONKS_PARAMETERBUILDERINJECTOR_H
+#define QTONKS_PARAMETERBUILDERINJECTOR_H
+
+namespace QTonks
+{
+
+void injectAllParameterBuilders();
+
+}
+
+#endif // QTONKS_PARAMETERBUILDERINJECTOR_H
