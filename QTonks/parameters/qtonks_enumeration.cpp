@@ -68,6 +68,8 @@ std::unique_ptr<Parameter> EnumerationParameterBuilder::build(const QJsonObject 
 
         auto currentButton = qobject_cast<QRadioButton*>(buttonGroup->button(currentIndex));
         Q_ASSERT(currentButton != nullptr);
+        QSignalBlocker blocker(currentButton);
+        Q_UNUSED(blocker);
         currentButton->setChecked(true);
     }
 
