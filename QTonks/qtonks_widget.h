@@ -22,8 +22,6 @@ public:
 
     void clear();
 
-    QFormLayout* getLayout();
-
 signals:
     void currentSettingsChanged(QJsonObject settings);
 

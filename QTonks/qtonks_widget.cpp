@@ -77,9 +77,4 @@ void Widget::clear()
         m_mainLayout->removeRow(i - 1);
 }
 
-QFormLayout *Widget::getLayout()
-{
-    return m_mainLayout;
-}
-
 }
