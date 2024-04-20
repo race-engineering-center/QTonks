@@ -39,7 +39,7 @@ void Widget::setSchema(const QJsonArray &schema)
             continue;
         }
         QJsonObject object = entity.toObject();
-        auto parameter = builder->build(object, m_mainLayout);
+        auto parameter = builder->build(object, this);
         m_parameters.emplace(std::move(name), std::move(parameter));
     }
 }
@@ -73,6 +73,11 @@ void Widget::clear()
     m_parameters.clear();
     for (int i = m_mainLayout->rowCount(); i > 0; i--)
         m_mainLayout->removeRow(i - 1);
+}
+
+QFormLayout *Widget::getLayout()
+{
+    return m_mainLayout;
 }
 
 }

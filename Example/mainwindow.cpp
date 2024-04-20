@@ -18,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionSetCurrentSettings, &QAction::triggered, this, &MainWindow::onSetCurrentSettings);
 
     QTonks::injectAllParameterBuilders();
+
+    connect(ui->widget, &QTonks::Widget::currentSettingsChanged, this, &MainWindow::onSettingsUpdated);
 }
 
 MainWindow::~MainWindow()
@@ -64,4 +66,9 @@ void MainWindow::onSetCurrentSettings()
 
     QJsonObject object = jsonDocument.object();
     ui->widget->setCurrentSettings(object);
+}
+
+void MainWindow::onSettingsUpdated(QJsonObject settings)
+{
+    qDebug() << "Settings updated:" <<settings;
 }

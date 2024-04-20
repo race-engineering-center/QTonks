@@ -21,6 +21,8 @@ public:
     void onGetCurrentSettings();
     void onSetCurrentSettings();
 
+    void onSettingsUpdated(QJsonObject settings);
+
 private:
     Ui::MainWindow *ui;
 };

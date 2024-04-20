@@ -26,7 +26,7 @@ private:
 class EnumerationParameterBuilder : public ParameterBuilder
 {
 public:
-    std::unique_ptr<Parameter> build(const QJsonObject& object, QFormLayout* layout) override;
+    std::unique_ptr<Parameter> build(const QJsonObject& object, Widget* widget) override;
 
     static const char* name();
 };

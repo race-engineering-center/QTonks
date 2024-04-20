@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QFormLayout>
 
-#include "qtonks_parameterbuilder.h"
+#include "qtonks_parameter.h"
 
 namespace QTonks
 {
@@ -22,7 +22,10 @@ public:
 
     void clear();
 
+    QFormLayout* getLayout();
+
 signals:
+    void currentSettingsChanged(QJsonObject settings);
 
 protected:
     QFormLayout* m_mainLayout;

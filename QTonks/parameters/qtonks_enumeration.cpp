@@ -33,7 +33,7 @@ void EnumerationParameter::setCurrentSettings(const QJsonObject &settings)
     }
 }
 
-std::unique_ptr<Parameter> EnumerationParameterBuilder::build(const QJsonObject &object, QFormLayout *layout)
+std::unique_ptr<Parameter> EnumerationParameterBuilder::build(const QJsonObject &object, Widget *widget)
 {
     QString label = object["label"].toString();
 
@@ -54,6 +54,12 @@ std::unique_ptr<Parameter> EnumerationParameterBuilder::build(const QJsonObject 
             QRadioButton *radioButton = new QRadioButton(labelsArray[i].toString());
             buttonGroup->addButton(radioButton, i);
             groupBox->layout()->addWidget(radioButton);
+
+            QObject::connect(radioButton, &QRadioButton::toggled, widget, [widget](bool on) {
+                if (on == false)
+                    return;
+                emit widget->currentSettingsChanged(widget->getCurrentSettings());
+            });
         }
 
         int currentIndex = object["defaultSelectedOption"].toInt(0);
@@ -65,6 +71,8 @@ std::unique_ptr<Parameter> EnumerationParameterBuilder::build(const QJsonObject 
         currentButton->setChecked(true);
     }
 
+    auto layout = qobject_cast<QFormLayout*>(widget->layout());
+    Q_ASSERT(layout != nullptr);
     layout->addRow(groupBox);
 
     return std::make_unique<EnumerationParameter>(groupBox, buttonGroup);

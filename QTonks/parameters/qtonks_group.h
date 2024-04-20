@@ -2,7 +2,7 @@
 #define QTONKS_GROUPPARAMETER_H
 
 #include "qtonks_parameter.h"
-#include "qtonks_widget.h"
+#include "qtonks_parameterbuilder.h"
 
 namespace QTonks
 {
@@ -22,7 +22,7 @@ private:
 class GroupParameterBuilder : public ParameterBuilder
 {
 public:
-    std::unique_ptr<Parameter> build(const QJsonObject& object, QFormLayout* layout) override;
+    std::unique_ptr<Parameter> build(const QJsonObject& object, Widget* widget) override;
 
     static const char* name();
 };
