@@ -59,6 +59,8 @@ QJsonObject Widget::getCurrentSettings() const
 
 void Widget::setCurrentSettings(const QJsonObject &settings)
 {
+    QSignalBlocker blocker(this);
+    Q_UNUSED(blocker);
     for (const auto& [name, parameter]: m_parameters)
     {
         QJsonObject s = settings.value(name).toObject();

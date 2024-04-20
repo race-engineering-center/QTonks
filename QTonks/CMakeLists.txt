@@ -26,6 +26,8 @@ set(PROJECT_SOURCES
         parameters/qtonks_switch.h
         parameters/qtonks_enumeration.cpp
         parameters/qtonks_enumeration.h
+        parameters/qtonks_integer.cpp
+        parameters/qtonks_integer.h
         parameters/qtonks_group.h
         parameters/qtonks_group.cpp
 )
