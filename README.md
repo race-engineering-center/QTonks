@@ -39,6 +39,7 @@ editing settings based on a JSON schema
         },
         {
             "name": "someIntegerValue",
+            "label": "Number of something",
             "type": "integer",
             "min": 0,
             "max": 100,
