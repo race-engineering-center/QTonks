@@ -23,15 +23,16 @@ void ColorPickerLabel::mousePressEvent(QMouseEvent *ev)
     QColorDialog dialog(m_color, window());
 
     dialog.adjustSize();
-    dialog.exec();
+    if (dialog.exec() != QDialog::Accepted)
+        return;
 
-    QColor color = dialog.currentColor();
-    if (!color.isValid() || color == m_color)
+    QColor color = dialog.selectedColor();
+    if (color == m_color)
         return;
 
     m_color = color;
     update();
-    emit sendColorChanged();
+    emit colorChanged();
 }
 
 void ColorPickerLabel::paintEvent(QPaintEvent *event)
@@ -41,12 +42,11 @@ void ColorPickerLabel::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setBrush(m_color);
 
-    painter.drawRect(0, 0, width(), height());
+    painter.drawRect(rect());
 }
 
 ColorParameter::ColorParameter(ColorPickerLabel *label, QColor color)
     : m_colorPicker(label)
-    , m_color(color)
 {
     m_colorPicker->setColor(color);
 }
@@ -62,10 +62,11 @@ QJsonObject ColorParameter::getCurrentSettings() const
 
 void ColorParameter::setCurrentSettings(const QJsonObject &settings)
 {
-    QString repr = settings["color"].toString();
-    QColor color(repr);
+    QColor color(settings["color"].toString());
+    if (!color.isValid())
+        return;
     m_colorPicker->setColor(color);
-    m_color = color;
+    m_colorPicker->update();
 }
 
 std::unique_ptr<Parameter> ColorParameterBuilder::build(const QJsonObject &object, Widget *widget)
@@ -75,7 +76,6 @@ std::unique_ptr<Parameter> ColorParameterBuilder::build(const QJsonObject &objec
 
     QString repr = object["default"].toString();
     QColor color(repr);
-    qDebug()<<color<<repr;
 
     QString nameLabel = object["label"].toString();
     label->setText(nameLabel);
@@ -88,7 +88,7 @@ std::unique_ptr<Parameter> ColorParameterBuilder::build(const QJsonObject &objec
     Q_ASSERT(layout != nullptr);
     layout->addRow(horizontalLayout);
 
-    QObject::connect(colorPicker, &ColorPickerLabel::sendColorChanged, widget, [widget]() {
+    QObject::connect(colorPicker, &ColorPickerLabel::colorChanged, widget, [widget]() {
         emit widget->currentSettingsChanged(widget->getCurrentSettings());
     });
 

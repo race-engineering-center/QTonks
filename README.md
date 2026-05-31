@@ -15,6 +15,7 @@ editing settings based on a JSON schema.
 - `Switch`: a checkbox with a label that can be on or off
 - `Enumeration`: a group of options you can choose from
 - `Integer`: a field with an integer number and up/down buttons
+- `Color`: a control to pick a color using a dedicated color picker
 - `Group`: a container for any number of nested QTonks widgets
 
 ## How it looks
@@ -84,6 +85,12 @@ editing settings based on a JSON schema.
                     ]
                 }
             ]
+        },
+        {
+            "name": "colorPicker",
+            "type": "color",
+            "label": "Pick your favorite color",
+            "default": "#aa00ff"
         }
     ]
 }

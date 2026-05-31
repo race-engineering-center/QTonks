@@ -1,5 +1,5 @@
-#ifndef QTONKS_COLORARAMETER_H
-#define QTONKS_COLORARAMETER_H
+#ifndef QTONKS_COLORPARAMETER_H
+#define QTONKS_COLORPARAMETER_H
 
 #include "qtonks_parameter.h"
 #include "qtonks_parameterbuilder.h"
@@ -24,7 +24,7 @@ private:
     QColor m_color;
 
 signals:
-    void sendColorChanged();
+    void colorChanged();
 };
 
 class ColorParameter : public Parameter
@@ -36,7 +36,6 @@ public:
     void setCurrentSettings(const QJsonObject& settings) override;
 
 private:
-    QColor m_color;
     ColorPickerLabel* m_colorPicker;
 };
 
@@ -50,4 +49,4 @@ public:
 
 }
 
-#endif // QTONKS_COLORARAMETER_H
+#endif // QTONKS_COLORPARAMETER_H
