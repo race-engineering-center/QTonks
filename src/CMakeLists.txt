@@ -28,6 +28,8 @@ set(PROJECT_SOURCES
         parameters/qtonks_enumeration.h
         parameters/qtonks_integer.cpp
         parameters/qtonks_integer.h
+        parameters/qtonks_float.cpp
+        parameters/qtonks_float.h
         parameters/qtonks_group.h
         parameters/qtonks_group.cpp
         parameters/qtonks_color.h

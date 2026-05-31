@@ -40,6 +40,10 @@ std::unique_ptr<Parameter> IntegerParameterBuilder::build(const QJsonObject &obj
     spinBox->setMaximum(maxValue);
     spinBox->setValue(defaultValue);
 
+    QObject::connect(spinBox, &QSpinBox::valueChanged, widget, [widget](int){
+        emit widget->currentSettingsChanged(widget->getCurrentSettings());
+    });
+
     label->setText(nameLabel);
 
     auto horizontalLayout = new QHBoxLayout;
