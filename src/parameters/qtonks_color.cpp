@@ -18,11 +18,15 @@ QColor ColorPickerLabel::color() const
 
 void ColorPickerLabel::mousePressEvent(QMouseEvent *ev)
 {
-    QColor color = QColorDialog::getColor(m_color, window());
-    if (!color.isValid())
-        return;
+    // going an extra mile here to avoid "Unable to set geometry" warning
+    // emitted from `QColorDialog::getColor`
+    QColorDialog dialog(m_color, window());
 
-    if (color == m_color)
+    dialog.adjustSize();
+    dialog.exec();
+
+    QColor color = dialog.currentColor();
+    if (!color.isValid() || color == m_color)
         return;
 
     m_color = color;
