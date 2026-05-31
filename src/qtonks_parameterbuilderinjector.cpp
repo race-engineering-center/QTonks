@@ -7,6 +7,7 @@
 #include "qtonks_integer.h"
 #include "qtonks_group.h"
 #include "qtonks_color.h"
+#include "qtonks_float.h"
 
 namespace QTonks
 {
@@ -29,6 +30,7 @@ void injectAllParameterBuilders()
     addParameterBuilder<IntegerParameterBuilder>();
     addParameterBuilder<GroupParameterBuilder>();
     addParameterBuilder<ColorParameterBuilder>();
+    addParameterBuilder<FloatParameterBuilder>();
 }
 
 }

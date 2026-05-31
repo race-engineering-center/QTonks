@@ -15,6 +15,7 @@ editing settings based on a JSON schema.
 - `Switch`: a checkbox with a label that can be on or off
 - `Enumeration`: a group of options you can choose from
 - `Integer`: a field with an integer number and up/down buttons
+- `Float`: a field with a floating point number, up/down buttons, and a configurable step
 - `Color`: a control to pick a color using a dedicated color picker
 - `Group`: a container for any number of nested QTonks widgets
 
@@ -23,6 +24,8 @@ editing settings based on a JSON schema.
 ![QTonks look](look.png "QTonks look")
 
 ## Schema examples
+
+Copy the following schema to the example application to get an idea how it works
 
 ```json
 {
@@ -56,6 +59,15 @@ editing settings based on a JSON schema.
             "default": 42
         },
         {
+            "name": "someFloatValue",
+            "label": "Some float value",
+            "type": "float",
+            "min": 0.0,
+            "max": 1.0,
+            "step": 0.01,
+            "default": 0.5
+        },
+        {
             "name": "someGroup",
             "type": "group",
             "label": "Group of settings",
@@ -81,6 +93,15 @@ editing settings based on a JSON schema.
                             "name": "nestedSwitch",
                             "type": "switch",
                             "label": "Wow!"
+                        },
+                        {
+                            "name": "anotherDoubleValue",
+                            "type": "float",
+                            "label": "Some other float value",
+                            "min": 5,
+                            "max": 10,
+                            "step": 0.1,
+                            "default": 7
                         }
                     ]
                 }
