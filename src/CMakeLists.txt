@@ -30,6 +30,8 @@ set(PROJECT_SOURCES
         parameters/qtonks_integer.h
         parameters/qtonks_group.h
         parameters/qtonks_group.cpp
+        parameters/qtonks_color.h
+        parameters/qtonks_color.cpp
 )
 
 qt_add_library(${PROJECT_NAME}

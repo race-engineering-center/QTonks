@@ -6,6 +6,7 @@
 #include "qtonks_enumeration.h"
 #include "qtonks_integer.h"
 #include "qtonks_group.h"
+#include "qtonks_color.h"
 
 namespace QTonks
 {
@@ -27,6 +28,7 @@ void injectAllParameterBuilders()
     addParameterBuilder<EnumerationParameterBuilder>();
     addParameterBuilder<IntegerParameterBuilder>();
     addParameterBuilder<GroupParameterBuilder>();
+    addParameterBuilder<ColorParameterBuilder>();
 }
 
 }
